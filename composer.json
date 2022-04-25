@@ -1,0 +1,22 @@
+{
+  "name": "Control",
+  "type": "project",
+  "description": "The Control Framework.",
+  "keywords": [
+    "framework",
+    "Control"
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Lib\\": "lib/"
+    },
+    "files": [
+      "app/util/helpers.php"
+    ]
+  },
+  "require": {
+    "ext-mysql": "*"
+  }
+}

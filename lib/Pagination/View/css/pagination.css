@@ -1,0 +1,60 @@
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  list-style: none;
+}
+
+.pagination .page-item {
+  cursor: pointer;
+}
+
+.pagination .page-item .page-link {
+  padding: 5px 10px;
+  background-color: #a8c0ad;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #1F1F1F;
+  border: 1px solid #1F1F1F;
+  text-decoration: none;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #97b09c;
+}
+
+.pagination .page-item.active, .pagination .page-item.disabled,
+.pagination .page-item.active .page-link,
+.pagination .page-item.disabled .page-link {
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #78927d;
+}
+
+.pagination .page-item:not(:first-child) .page-link {
+  border-left: none;
+}
+
+.pagination .page-item:first-child .page-link {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination .page-item:last-child .page-link {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/*# sourceMappingURL=pagination.css.map */

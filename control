@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+    require __DIR__ . '/vendor/autoload.php';
+    use Lib\File\File;
+
+    function views()
+    {
+        $start = time();
+
+        $dir = basePath() . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'views';
+
+        $files = scanDir($dir);
+
+        foreach ($files as $file => $value) {
+            if ($value === '.' || $value === '..') {
+                continue;
+            }
+
+            $path = $dir . DIRECTORY_SEPARATOR . $value;
+            File::removeFile($path);
+        }
+
+        $end = time();
+
+        echo 'start :: ' . $start . "\n";
+        echo 'end :: ' . $end . "\n";
+        echo 'duration :: ' . ($end - $start) . "\n";
+    }
+
+    $count = count($argv);
+
+    if ($count > 0 && $argv[0] === 'control') {
+        if ($count > 1 && $argv[1] === 'view:clear') {
+            views();
+        }
+    }
