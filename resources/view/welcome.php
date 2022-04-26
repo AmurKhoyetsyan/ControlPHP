@@ -9,10 +9,17 @@
     </head>
     <body>
         <div style="width: 100%">
-            <h2 style="text-align: center; font-size: 48px;">Welcome Control PHP</h2>
-            <h3 style="text-align: center">for remove storage view files</h3>
-            <h4 style="text-align: center">run in terminal this command</h4>
-            <p style="text-align: center">php control view:clear</p>
+            <h2 style="font-size: 48px;">Welcome Control PHP</h2>
+            <h3>for remove storage view files</h3>
+            <h4>run in terminal this command</h4>
+            <p>php control view:clear</p>
+            <p>If <mark>composer install</mark> or <mark>composer update</mark> does not work, write <mark>composer dumb-autoload -o</mark></p>
         </div>
     </body>
 </html>
+
+<style type="text/css">
+    * {
+        text-align: center;
+    }
+</style>
