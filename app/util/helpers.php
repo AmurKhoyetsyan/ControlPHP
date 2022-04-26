@@ -148,6 +148,6 @@ if (!function_exists('includes')) {
      */
     function includes($path, $rule = false)
     {
-        include_once $rule ? $path : (basePath() . DIRECTORY_SEPARATOR . 'resurces' . DIRECTORY_SEPARATOR .'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $path)) . '.php');
+        include_once $rule ? $path : (basePath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR .'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $path)) . '.php');
     }
 }
