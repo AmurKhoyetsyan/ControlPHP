@@ -134,11 +134,7 @@ class Route
     {
         $callBack();
 
-        if (!is_array(self::$middleware)) {
-            self::$middleware = config('middleware');
-
-            self::closure_dump($callBack, $name);
-        }
+        self::closure_dump($callBack, $name);
 
         return new self;
     }
