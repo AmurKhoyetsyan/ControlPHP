@@ -12,10 +12,35 @@ trait Data
     /**
      * @return array
      */
+    protected function getFiles()
+    {
+        $data = !empty($_FILES) ? $_FILES : [];
+
+        $files = [];
+
+        foreach ($data as $item => $value) {
+            if (!!$value['error']) {
+                continue;
+            }
+
+            $files = array_merge($files, [$item => $value]);
+        }
+
+        return $files;
+    }
+
+    /**
+     * @return array
+     */
     protected function postRequest()
     {
         $data = !empty($_POST) ? $_POST : [];
-        $data['_file'] = !empty($_FILES) ? $_FILES : [];
+
+        $files = $this->getFiles();
+
+        if (!empty($files)) {
+            $data['_file'] = $files;
+        }
 
         return $data;
     }
