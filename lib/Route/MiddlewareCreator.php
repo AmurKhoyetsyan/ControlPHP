@@ -14,11 +14,6 @@ use ReflectionException;
 trait MiddlewareCreator
 {
     /**
-     * @var
-     */
-    protected static $middleware;
-
-    /**
      * @param string $equal
      * @param $middleware
      */
