@@ -61,7 +61,7 @@ trait Views
 
         $inc = substr($str, $start + 1, $end - $start - 1);
         $inc = trim($inc);
-        $path = basePath() . DIRECTORY_SEPARATOR . 'resurces' . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $inc)) . '.php';
+        $path = basePath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $inc)) . '.php';
 
 
         if (!file_exists($path)) {
