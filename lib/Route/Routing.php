@@ -4,7 +4,6 @@
 namespace Lib\Route;
 
 use Lib\File\File;
-use Lib\Statuses\Statuses;
 
 /**
  * Trait Routing
@@ -174,7 +173,5 @@ trait Routing
 
             return true;
         }
-
-        self::generateErrorView(Statuses::HTTP_NOT_FOUND, Statuses::$statusTexts[Statuses::HTTP_NOT_FOUND]);
     }
 }
