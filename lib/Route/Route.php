@@ -8,7 +8,7 @@ namespace Lib\Route;
  */
 class Route
 {
-    use Routing, MiddlewareCreator;
+    use Routing, MiddlewareCreator, NotFound;
 
     /**
      * @param array $option
