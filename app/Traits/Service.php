@@ -3,8 +3,6 @@
 
 namespace App\Traits;
 
-use App\db\Auth;
-
 /**
  * Trait Service
  * @package App\Traits

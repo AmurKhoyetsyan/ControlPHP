@@ -139,7 +139,7 @@ trait Routing
             $data = call_user_func(array($class, $function))->data;
         }
 
-        $uuid = Auth::uuid(50);
+        $uuid = uuid(50);
 
         $path = basePath() . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $uuid . '.php';
 
