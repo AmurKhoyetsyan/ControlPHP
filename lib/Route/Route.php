@@ -2,6 +2,8 @@
 
 namespace Lib\Route;
 
+use Lib\Statuses\Statuses;
+
 /**
  * Class Route
  * @package App\route
@@ -147,5 +149,7 @@ class Route
         foreach (self::$register as $key => $value) {
             self::printView($value);
         }
+
+        self::generateErrorView(Statuses::HTTP_NOT_FOUND, Statuses::$statusTexts[Statuses::HTTP_NOT_FOUND]);
     }
 }
