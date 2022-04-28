@@ -3,7 +3,6 @@
 
 namespace Lib\Route;
 
-use App\db\Auth;
 use Lib\File\File;
 
 /**

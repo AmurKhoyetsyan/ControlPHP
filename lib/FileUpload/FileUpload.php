@@ -3,7 +3,6 @@
 
 namespace Lib\FileUpload;
 
-use App\db\Auth;
 use Lib\File\File;
 
 /**
