@@ -151,3 +151,21 @@ if (!function_exists('includes')) {
         include_once $rule ? $path : (basePath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR .'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $path)) . '.php');
     }
 }
+
+if (!function_exists('uuid')) {
+    /**
+     * @param int $len
+     * @param string $str
+     * @return string
+     */
+    function uuid(int $len = 10, string $str = ''): string
+    {
+        $str .= uniqid();
+
+        if (mb_strlen($str) > $len) {
+            return mb_substr($str, 0, $len);
+        }
+
+        return uuid($len, $str);
+    }
+}

@@ -16,7 +16,7 @@ class Controller
     /**
      * @var
      */
-    protected $baseService;
+    protected $baseModel;
 
     /**
      * @var
