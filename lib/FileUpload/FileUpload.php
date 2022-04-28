@@ -3,7 +3,6 @@
 
 namespace Lib\FileUpload;
 
-use App\db\Auth;
 use Lib\File\File;
 
 /**
@@ -19,7 +18,7 @@ class FileUpload
      */
     public function upload($file, $path)
     {
-        $name = Auth::uuid(20) . basename($file['name']);
+        $name = uuid(20) . basename($file['name']);
         $fullPath = $path . $name;
         $check = getimagesize($file["tmp_name"]);
 

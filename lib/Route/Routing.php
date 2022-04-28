@@ -3,8 +3,8 @@
 
 namespace Lib\Route;
 
-use App\db\Auth;
 use Lib\File\File;
+use Lib\Statuses\Statuses;
 
 /**
  * Trait Routing
@@ -139,7 +139,7 @@ trait Routing
             $data = call_user_func(array($class, $function))->data;
         }
 
-        $uuid = Auth::uuid(50);
+        $uuid = uuid(50);
 
         $path = basePath() . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $uuid . '.php';
 
@@ -174,5 +174,7 @@ trait Routing
 
             return true;
         }
+
+        self::generateErrorView(Statuses::HTTP_NOT_FOUND, Statuses::$statusTexts[Statuses::HTTP_NOT_FOUND]);
     }
 }
