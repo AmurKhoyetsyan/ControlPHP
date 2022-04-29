@@ -104,6 +104,7 @@ trait Routing
     /**
      * @param $patForGenerateNewPhpFile
      * @param $dataForGenerateNewPhpFile
+     * @return bool
      */
     protected static function generateView($patForGenerateNewPhpFile, $dataForGenerateNewPhpFile)
     {
@@ -161,17 +162,17 @@ trait Routing
                         self::viewShow($value);
                         return true;
                     }
-
                     $runner->redirect();
-                    return false;
+                    die;
                 }
-
                 return false;
             }
 
             self::viewShow($value);
 
-            return true;
+            die;
         }
+
+        return false;
     }
 }
