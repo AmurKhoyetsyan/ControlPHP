@@ -1,7 +1,6 @@
 <?php
 
 namespace Lib\Route;
-
 use Lib\Statuses\Statuses;
 
 /**
@@ -71,7 +70,7 @@ class Route
      */
     public static function redirect(string $name, $id = null, $option = [])
     {
-        return header('Location: ' . self::getRoute($name, $id) . self::addStringDataRoute($option, is_null($id)));
+        return header('Location: ' . self::getRoute($name, $id) . self::addStringDataRoute($option, is_null($id)), true);
     }
 
     /**
