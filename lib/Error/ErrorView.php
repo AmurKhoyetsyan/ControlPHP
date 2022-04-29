@@ -14,6 +14,7 @@ class ErrorView
     /**
      * @param $status
      * @param $statusText
+     * @return bool
      */
     public static function generate($status, $statusText)
     {
@@ -22,6 +23,6 @@ class ErrorView
         echo "</style>";
         require_once 'View' . DIRECTORY_SEPARATOR . 'error.php';
 
-        die();
+        die;
     }
 }

@@ -133,13 +133,13 @@ trait ModelTraits
     }
 
     /**
-     * @param string[] $columns
      * @param $relationTable
+     * @param string[] $columns
      * @param array $condition
      * @param null $where
      * @return $this
      */
-    public function rightJoin($columns = ['*'], $relationTable, $condition = [], $where = null)
+    public function rightJoin($relationTable, $columns = ['*'], $condition = [], $where = null)
     {
         $columns = (array)$columns;
 
