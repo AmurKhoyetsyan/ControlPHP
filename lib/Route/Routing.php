@@ -4,6 +4,7 @@
 namespace Lib\Route;
 
 use Lib\File\File;
+use Lib\Response\Response;
 
 /**
  * Trait Routing
@@ -127,15 +128,27 @@ trait Routing
 
     /**
      * @param $value
+     * @return mixed
      */
     public static function viewShow($value)
     {
         $data = null;
         if (is_bool($value['controller'])) {
-            $data = call_user_func($value['function'])->data;
+            $function = $value['function'];
+
+            if ($function() instanceof Response) {
+                return $function();
+            }
+
+            $data = call_user_func($function)->data;
         } else {
             $class = new $value['controller'];
             $function = $value['function'];
+
+            if ($class->$function() instanceof Response) {
+                return $class->$function();
+            }
+
             $data = call_user_func(array($class, $function))->data;
         }
 
