@@ -37,12 +37,14 @@ class View
     /**
      * @param $viewName
      * @param $arguments
+     * @return View
      */
     public static function show($viewName, $arguments)
     {
         self::$viewName = $viewName;
         self::$view = basePath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $viewName)) . '.php';
         self::$arguments = $arguments;
+        return new self();
     }
 
     /**

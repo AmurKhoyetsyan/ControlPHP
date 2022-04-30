@@ -39,6 +39,7 @@ If `composer install` or `composer update` does not work, write `composer dumb-a
     redirect($name, $id, $option) // redirected route by name
     config($path) // get config content file and returned array (json)
     view($viewName, $arguments) // returned view by path on resources exp view('home.index', ['data' => $data]) and added arguments
+    response($data, $json = true) // for api
     includes($path, $rule = false) // included file by path on resources
     uuid($len) // returned unic id
     

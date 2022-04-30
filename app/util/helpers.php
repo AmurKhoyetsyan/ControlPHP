@@ -2,6 +2,7 @@
 
 use Lib\Route\Route;
 use Lib\View\View;
+use Lib\Response\Response;
 
 if (!function_exists('basePath')) {
     /**
@@ -134,10 +135,21 @@ if (!function_exists('view')) {
      * @param null $arguments
      * @return View
      */
-    function view($viewName, $arguments = null)
+    function view($viewName, $arguments = null): View
     {
-        View::show($viewName, $arguments);
-        return new View();
+        return View::show($viewName, $arguments);
+    }
+}
+
+if (!function_exists('response')) {
+    /**
+     * @param $data
+     * @param bool $json
+     * @return Response
+     */
+    function response($data, $json = true): Response
+    {
+        return Response::response($data, $json);
     }
 }
 
