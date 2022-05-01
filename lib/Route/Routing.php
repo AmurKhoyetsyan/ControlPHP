@@ -4,7 +4,6 @@
 namespace Lib\Route;
 
 use Lib\File\File;
-use Lib\Response\Response;
 
 /**
  * Trait Routing
@@ -105,7 +104,6 @@ trait Routing
     /**
      * @param $patForGenerateNewPhpFile
      * @param $dataForGenerateNewPhpFile
-     * @return bool
      */
     protected static function generateView($patForGenerateNewPhpFile, $dataForGenerateNewPhpFile)
     {
@@ -136,20 +134,24 @@ trait Routing
         if (is_bool($value['controller'])) {
             $function = $value['function'];
 
-            if ($function() instanceof Response) {
-                return $function();
+            $renderFunction = call_user_func($function);
+
+            if (!isset($renderFunction->data)) {
+                return $renderFunction;
             }
 
-            $data = call_user_func($function)->data;
+            $data = $renderFunction->data;
         } else {
             $class = new $value['controller'];
             $function = $value['function'];
 
-            if ($class->$function() instanceof Response) {
-                return $class->$function();
+            $renderFunction = call_user_func(array($class, $function));
+
+            if (!isset($renderFunction->data)) {
+                return $renderFunction;
             }
 
-            $data = call_user_func(array($class, $function))->data;
+            $data = $renderFunction->data;
         }
 
         $uuid = uuid(50);
@@ -173,8 +175,9 @@ trait Routing
                     $runner = new $config[$value['middleware']]();
                     if ($runner->run()) {
                         self::viewShow($value);
-                        return true;
+                        die;
                     }
+
                     $runner->redirect();
                     die;
                 }
@@ -182,7 +185,6 @@ trait Routing
             }
 
             self::viewShow($value);
-
             die;
         }
 
