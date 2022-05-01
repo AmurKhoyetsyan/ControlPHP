@@ -3,6 +3,8 @@
 
 namespace Lib\View;
 
+use Lib\File\File;
+
 /**
  * Trait Views
  * @package Lib\View
@@ -20,28 +22,20 @@ trait Views
     protected static $file;
 
     /**
-     * @return bool
-     */
-    protected static function issetFile()
-    {
-        return file_exists(self::$view);
-    }
-
-    /**
      * @return null
      */
     protected static function redFile()
     {
-        if (!self::issetFile()) {
+        if (!File::issetFile(self::$view)) {
             return null;
         }
 
-        self::$file = file_get_contents(self::$view);
+        self::$file = File::getContent(self::$view);
     }
 
     /**
      * @param $str
-     * @return false|string
+     * @return bool|false|string
      */
     protected static function getContentIncludes($str)
     {
@@ -64,11 +58,11 @@ trait Views
         $path = basePath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, explode('.', $inc)) . '.php';
 
 
-        if (!file_exists($path)) {
+        if (!File::issetFile($path)) {
             return $content;
         }
 
-        return file_get_contents($path);
+        return File::getContent($path);
     }
 
     /**
@@ -110,10 +104,12 @@ trait Views
         $code = '<?php ';
 
         if (isset($config[self::$viewName])) {
-            $start = strrpos($config[self::$viewName], DIRECTORY_SEPARATOR);
-            $len = strlen($config[self::$viewName]);
-            $word = substr($config[self::$viewName], $start + 1, $len - $start);
-            $code .= "\n use " . $config[self::$viewName] . "; \n $" . lcfirst($word) . " = new $word(); \n";
+            foreach ($config[self::$viewName] as $item) {
+                $start = strrpos($item, DIRECTORY_SEPARATOR);
+                $len = strlen($item);
+                $word = substr($item, $start + 1, $len - $start);
+                $code .= "\n use " . $item . "; \n $" . lcfirst($word) . " = new $word(); \n";
+            }
         }
 
         $code .= "?> \n";
