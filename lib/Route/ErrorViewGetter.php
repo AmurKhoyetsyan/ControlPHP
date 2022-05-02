@@ -1,15 +1,16 @@
 <?php
 
-
 namespace Lib\Route;
 
 use Lib\Error\ErrorView;
+use Lib\Route\Route;
+use Lib\Statuses\Statuses;
 
 /**
- * Trait NotFound
+ * Trait ErrorViewGetter
  * @package Lib\Route
  */
-trait NotFound
+trait ErrorViewGetter
 {
     /**
      * @param $status
@@ -21,8 +22,13 @@ trait NotFound
 
         http_response_code($status);
 
-        if (!is_null($getPageNotFount['not-found'])) {
-            $view = view($getPageNotFount['not-found']);
+        $viewName = Statuses::$errorViewName[$status];
+
+        if (isset($getPageNotFount[$viewName]) && !is_null($getPageNotFount[$viewName])) {
+            $view = view($getPageNotFount[$viewName], [
+                'status' => $status,
+                'statusText' => $statusText
+            ]);
 
             $uuid = uuid(50);
 
