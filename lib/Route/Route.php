@@ -1,6 +1,7 @@
 <?php
 
 namespace Lib\Route;
+
 use Lib\Statuses\Statuses;
 
 /**
@@ -9,7 +10,7 @@ use Lib\Statuses\Statuses;
  */
 class Route
 {
-    use Routing, MiddlewareCreator, NotFound;
+    use Routing, MiddlewareCreator, ErrorViewGetter;
 
     /**
      * @param array $option
@@ -102,7 +103,7 @@ class Route
      */
     public static function put(string $routeName, $controller)
     {
-        self::createDataRoute($routeName, $controller, 'PUT');
+        self::createDataRoute($routeName, $controller, 'POST');
         return new self;
     }
 
@@ -113,7 +114,7 @@ class Route
      */
     public static function destroy(string $routeName, $controller)
     {
-        self::createDataRoute($routeName, $controller, 'DESTROY');
+        self::createDataRoute($routeName, $controller, 'GET');
         return new self;
     }
 

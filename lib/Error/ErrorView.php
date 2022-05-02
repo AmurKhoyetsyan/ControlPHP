@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Lib\Error;
 
 use Lib\File\File;
@@ -14,7 +13,6 @@ class ErrorView
     /**
      * @param $status
      * @param $statusText
-     * @return bool
      */
     public static function generate($status, $statusText)
     {

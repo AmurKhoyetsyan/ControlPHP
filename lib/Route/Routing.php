@@ -4,6 +4,7 @@
 namespace Lib\Route;
 
 use Lib\File\File;
+use Lib\Request\Request;
 
 /**
  * Trait Routing
@@ -174,18 +175,26 @@ trait Routing
                 if (isset($config[$value['middleware']])) {
                     $runner = new $config[$value['middleware']]();
                     if ($runner->run()) {
-                        self::viewShow($value);
-                        die;
+                        Request::issetMethod($value['method'], function() use($value) {
+                            self::viewShow($value);
+                        }, function ($status, $statusText) {
+                            self::generateErrorView($status, $statusText);
+                        });
                     }
 
-                    $runner->redirect();
-                    die;
+                    Request::issetMethod($value['method'], function() use($runner) {
+                        $runner->redirect();
+                    }, function ($status, $statusText) {
+                        self::generateErrorView($status, $statusText);
+                    });
                 }
                 return false;
             }
-
-            self::viewShow($value);
-            die;
+            Request::issetMethod($value['method'], function() use($value) {
+                self::viewShow($value);
+            }, function ($status, $statusText) {
+                self::generateErrorView($status, $statusText);
+            });
         }
 
         return false;
