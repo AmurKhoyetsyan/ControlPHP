@@ -19,6 +19,8 @@ class Response
      */
     public function __construct()
     {
+        header('Content-type: text/json; charset=utf-8');
+
         print_r(self::$data);
         die;
     }
