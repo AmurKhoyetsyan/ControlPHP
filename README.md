@@ -42,6 +42,7 @@ If `composer install` or `composer update` does not work, write `composer dumb-a
     response($data, $json = true) // for api
     includes($path, $rule = false) // included file by path on resources
     uuid($len) // returned unic id
+    set_method($method) // for set method on form
     
     
 #### for include in view 

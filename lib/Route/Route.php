@@ -103,7 +103,7 @@ class Route
      */
     public static function put(string $routeName, $controller)
     {
-        self::createDataRoute($routeName, $controller, 'POST');
+        self::createDataRoute($routeName, $controller, 'PUT');
         return new self;
     }
 
@@ -114,7 +114,7 @@ class Route
      */
     public static function destroy(string $routeName, $controller)
     {
-        self::createDataRoute($routeName, $controller, 'GET');
+        self::createDataRoute($routeName, $controller, 'DELETE');
         return new self;
     }
 

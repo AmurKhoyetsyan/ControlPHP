@@ -1,22 +1,24 @@
 <?php
 
-
 namespace App\Controller;
 
-use App\Traits\Data;
+use Lib\Request\Request;
 
 /**
  * Class Controller
  * @package App\Controller
  */
-class Controller
+class Controller extends Request
 {
-    use Data;
-
     /**
      * @var
      */
     protected $baseModel;
+
+    /**
+     * @var
+     */
+    protected $baseService;
 
     /**
      * @var

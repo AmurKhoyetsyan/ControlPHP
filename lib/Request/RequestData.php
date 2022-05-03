@@ -1,18 +1,31 @@
 <?php
 
 
-namespace App\Traits;
+namespace Lib\Request;
 
 /**
- * Trait Data
- * @package App\Traits
+ * Trait RequestData
+ * @package Lib\Request
  */
-trait Data
+trait RequestData
 {
+    /**
+     * set method for request
+     */
+    protected static function setMethod()
+    {
+        if (!empty($_POST)) {
+            if (isset($_POST['_method'])) {
+                $_SERVER['REQUEST_METHOD'] = $_POST['_method'];
+                unset($_POST['_method']);
+            }
+        }
+    }
+
     /**
      * @return array
      */
-    protected function getFiles()
+    protected static function getFiles()
     {
         $data = !empty($_FILES) ? $_FILES : [];
 
@@ -32,11 +45,11 @@ trait Data
     /**
      * @return array
      */
-    protected function postRequest()
+    public static function postRequest()
     {
         $data = !empty($_POST) ? $_POST : [];
 
-        $files = $this->getFiles();
+        $files = self::getFiles();
 
         if (!empty($files)) {
             $data['_file'] = $files;
@@ -48,7 +61,7 @@ trait Data
     /**
      * @return array
      */
-    protected function getRequest()
+    public static function getRequest()
     {
         if (!empty($_GET)) {
             array_shift($_GET);
