@@ -3,7 +3,6 @@
 
 namespace Lib\Request;
 
-use Lib\Route\Route;
 use Lib\Statuses\Statuses;
 
 /**
@@ -12,6 +11,8 @@ use Lib\Statuses\Statuses;
  */
 class Request
 {
+    use RequestData;
+
     /**
      * @param string $method
      * @param callable $callable
@@ -19,6 +20,8 @@ class Request
      */
     public static function issetMethod(string $method, callable $callable, callable $generate)
     {
+        self::setMethod();
+
         if (strtolower($_SERVER['REQUEST_METHOD']) === strtolower($method)) {
             $callable();
             die;
