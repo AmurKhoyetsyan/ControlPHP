@@ -3,6 +3,15 @@
     require __DIR__ . '/vendor/autoload.php';
     use Lib\File\File;
 
+    function namePrint()
+    {
+        echo "\033[0;36m    ###      ###    ####    ## ######## ##       \033[0m \n";
+        echo "\033[0;36m  ##   ##  ##   ##  ## ##   ##    ##    ##       \033[0m \n";
+        echo "\033[0;36m ##       ##     ## ##  ##  ##    ##    ##       \033[0m \n";
+        echo "\033[0;36m  ##   ##  ##   ##  ##   ## ##    ##    ##       \033[0m \n";
+        echo "\033[0;36m    ###      ###    ##    ####    ##    #######  \033[0m \n";
+    }
+
     function views()
     {
         $start = time();
@@ -29,8 +38,18 @@
 
     $count = count($argv);
 
-    if ($count > 0 && $argv[0] === 'control') {
-        if ($count > 1 && $argv[1] === 'view:clear') {
-            views();
+    if ($count > 0 && $argv[0] === 'control' && $count > 1) {
+        switch($argv[1]) {
+            case 'view:clear': views(); break;
+            case '-v': echo "\033[0;31m CONTROL PHP V 0.0.1 \033[0m \n"; break;
+            case 'version': echo "\033[0;31m CONTROL PHP V 0.0.1 \033[0m \n"; break;
+            case '-n': namePrint(); break;
+            case 'name': namePrint(); break;
+            case '-l': echo "\033[0;33m LICENSE MIT \033[0m \n"; break;
+            case 'license': echo "\033[0;33m LICENSE MIT \033[0m \n"; break;
+            case '-a': echo "\033[0;32m AUTHOR AMUR KHOYETSYN \033[0m"; break;
+            case 'author': echo "\033[0;32m AUTHOR AMUR KHOYETSYN \033[0m"; break;
+            default: echo $argv[1] . ': command not found'; break;
         }
     }
+
