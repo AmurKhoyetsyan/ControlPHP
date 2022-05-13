@@ -1,10 +1,38 @@
-# Control PHP
+# Amount Report
 for open page index.php of public -> public/index.php
 
+## for autolad
+
+### create composer.json in kernel
+
+    {
+      "autoload": {
+        "psr-4": {
+          "App\\":"app/"
+        }
+      }
+    }
+    
+if folder app --> "App\\":"app/"
+<br />
+if folder src --> "Src\\":"src/"
+<br />
+
+    
 ### for remove storage view files
 run in terminal this command
 
     php control view:clear
+    php control -n
+    php control name
+    php control -l
+    php control license
+    php control -lp
+    php control license:print
+    php control -v
+    php control version
+    php control -a
+    php control author
 
 If `composer install` or `composer update` does not work, write `composer dumb-autoload -o`
 
