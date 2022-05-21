@@ -23,6 +23,7 @@ if folder src --> "Src\\":"src/"
 run in terminal this command
 
     php control view:clear
+    php control bush:clear
     php control -n
     php control name
     php control -l
