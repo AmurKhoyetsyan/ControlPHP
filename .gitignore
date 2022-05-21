@@ -1,5 +1,6 @@
 /node_modules
 /storage/views/*
+/storage/bush/*
 /vendor
 .env
 .env.backup
